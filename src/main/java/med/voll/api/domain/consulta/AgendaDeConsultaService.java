@@ -26,7 +26,7 @@ public class AgendaDeConsultaService {
             throw new ValidacionDeIntegridad("el id paciente no fue encontrado");
         }
 
-        if (datos.idMedico() != null && medicoRepository.existsById(datos.id())) {
+        if (datos.idMedico() != null && !medicoRepository.existsById(datos.id())) {
             throw new ValidacionDeIntegridad("el id medico no fue encontrado");
         }
 
