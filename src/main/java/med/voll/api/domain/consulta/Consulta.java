@@ -2,7 +2,10 @@ package med.voll.api.domain.consulta;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,7 +25,7 @@ import med.voll.api.domain.paciente.Paciente;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "consulta")
+@Table(name = "consultas")
 public class Consulta {
     
     @Id 
@@ -38,4 +41,18 @@ public class Consulta {
     private Paciente paciente;
 
     private LocalDateTime date;
+
+    @Column(name = "motivo_cancelamiento")
+    @Enumerated(EnumType.STRING)
+    private MotivoCancelamiento motivoCancelamiento;
+
+    public Consulta( Medico medico, Paciente paciente, LocalDateTime date){
+        this.medico = medico;
+        this.paciente = paciente;
+        this.date = date;
+    }
+
+    public void cancelar(MotivoCancelamiento motivo){
+        this.motivoCancelamiento = motivo;
+    }
 }

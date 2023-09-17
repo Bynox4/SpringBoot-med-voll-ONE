@@ -10,8 +10,8 @@ public record DatosAgendarConsulta(
     Long id,
     @NotNull Long idPaciente,
     Long idMedico,
-    @NotNull @Future LocalDateTime fecha,
-    Especialidad especialadad
+    @NotNull @Future LocalDateTime date,
+    Especialidad especialidad
 ) {
 
 }
